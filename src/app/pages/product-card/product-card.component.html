@@ -1,0 +1,24 @@
+<div>
+  <div>
+    <button (click)="back()">
+      Назад
+    </button>
+    <button (click)="switchMode()" [disabled]="editMode">
+      Редкактировать
+    </button>
+  </div>
+  <form [formGroup]="productDataForm" (ngSubmit)="save()">
+    <div>
+      <input type="text" formControlName="name">
+      <textarea formControlName="description"></textarea>
+    </div>
+    <div *ngIf="editMode">
+      <button [disabled]="!productDataForm.dirty" type="submit">
+        Сохранить
+      </button>
+      <button (click)="cancel()">
+        Отмена
+      </button>
+    </div>
+  </form>
+</div>
