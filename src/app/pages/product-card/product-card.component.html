@@ -1,5 +1,5 @@
-<div>
-  <div>
+<div class="product-card">
+  <div class="product-card-controls">
     <button (click)="back()">
       Назад
     </button>
@@ -7,12 +7,20 @@
       Редкактировать
     </button>
   </div>
-  <form [formGroup]="productDataForm" (ngSubmit)="save()">
-    <div>
-      <input type="text" formControlName="name">
-      <textarea formControlName="description"></textarea>
+  <form [formGroup]="productDataForm" (ngSubmit)="save()" class="product-card-form">
+    <div class="product-card-form-input">
+      <label for="name">
+        Название товара
+        <input class="product-card-form-input-field" type="text" id="name" formControlName="name">
+      </label>
     </div>
-    <div *ngIf="editMode">
+    <div class="product-card-form-input">
+      <label for="description">
+        Описание товара
+        <textarea appTextareaResize class="product-card-form-input-field" id="description" formControlName="description"></textarea>
+      </label>
+    </div>
+    <div *ngIf="editMode" class="product-card-form-controls">
       <button [disabled]="!productDataForm.dirty" type="submit">
         Сохранить
       </button>

@@ -1,15 +1,15 @@
-<div class="list-body">
+<div>
   <div class="list-control">
-    <div class="">
-      <input placeholder="Введите поиск" type="text" [(ngModel)]="filterName" (input)="changeFilterName()" />
+    <div class="list-control-input-container">
+      <input placeholder="Введите название" type="text" [(ngModel)]="filterName" (input)="changeFilterName()" />
     </div>
-    <div>
+    <div class="list-control-filter-img-container">
       <img [src]="'assets/arrow-' + filterDirection + '.svg'" (click)="switchFilter()" />
     </div>
   </div>
-  <div class="list-goods">
+  <div class="goods-list">
     <div *ngFor="let good of filteredGoods">
-      <app-small-product-card [data]="good" (click)="openProduct(good)">
+      <app-small-product-card [data]="good">
       </app-small-product-card>
     </div>
   </div>

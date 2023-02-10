@@ -1,6 +1,6 @@
-import { HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http'
-import { Injectable } from '@angular/core'
-import { Observable, of } from 'rxjs'
+import { HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of, switchMap, timer } from 'rxjs';
 
 import { GoodsList, Product } from 'src/app/interfaces/product';
 import { list } from './mock-data';
@@ -11,18 +11,20 @@ export class BackendInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(req: HttpRequest<any>): Observable<HttpResponse<GoodsList | Product | void>> {
-    const url = req.url.split('goods/');
+    return timer(50).pipe(switchMap(() => {
+      const url = req.url.split('goods/');
 
     if(req.method === 'POST') {
       this.updateProduct(req.body);
-      return of(new HttpResponse<void>({ status: 200 }))
+      return of(new HttpResponse<void>({ status: 200 }));
     }
 
     if (url.length > 1) {
-      return of (new HttpResponse({ status: 200, body: list.find(o => o.id === url[url.length - 1]) }))
+      return of(new HttpResponse({ status: 200, body: list.find(o => o.id === url[url.length - 1]) }));
     }
 
-    return of(new HttpResponse({ status: 200, body: list }))
+    return of(new HttpResponse({ status: 200, body: list }));
+    }))
   }
 
   private updateProduct(data: Product) {

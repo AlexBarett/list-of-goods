@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 
 import { GoodsListService } from 'src/app/services/goods-list.service';
@@ -24,15 +24,16 @@ export class ProductCardComponent implements OnInit {
     private goodsService: GoodsListService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location
-    ) {
-      this.productDataForm = this.fb.group({
-        id: '',
-        name: '',
-        description: ''
-      });
-      this.productDataForm.disable();
-    }
+  ) {
+    this.productDataForm = this.fb.group({
+      id: '',
+      name: '',
+      description: ''
+    });
+    this.productDataForm.disable();
+  }
 
   ngOnInit() {
     this.route.params.pipe(
@@ -41,10 +42,13 @@ export class ProductCardComponent implements OnInit {
       this.data = data;
       this.resetForm();
     });
+
   }
 
   back() {
-    this.location.back()
+    this.location.historyGo.length > 0
+      ? this.location.back()
+      : this.router.navigate([''], { relativeTo: this.route.parent })
   }
 
   cancel() {
@@ -67,5 +71,4 @@ export class ProductCardComponent implements OnInit {
   private resetForm() {
     this.productDataForm.setValue(this.data || {});
   }
-
 }

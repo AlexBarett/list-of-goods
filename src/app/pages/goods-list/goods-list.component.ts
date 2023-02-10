@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 import { GoodsList } from 'src/app/interfaces/product';
-import { GoodsListService } from 'src/app/services/goods-list.service'
+import { GoodsListService } from 'src/app/services/goods-list.service';
 
 
 @Component({
@@ -19,11 +18,7 @@ export class GoodsListComponent implements OnInit {
 
   private goods?: GoodsList;
 
-  constructor(
-    private goodsService: GoodsListService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private goodsService: GoodsListService) { }
 
   ngOnInit() {
     this.loadFilter();
@@ -34,10 +29,6 @@ export class GoodsListComponent implements OnInit {
     this.filterDirection = this.filterDirection === 'up' ? 'down' : 'up';
     localStorage.setItem('goods-list-filter', this.filterDirection);
     this.applyFilters();
-  }
-
-  openProduct(good: any) {
-    this.router.navigate([good.id], { relativeTo: this.route });
   }
 
   changeFilterName() {

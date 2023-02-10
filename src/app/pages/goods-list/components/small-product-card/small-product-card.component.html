@@ -1,3 +1,15 @@
-<div>
-    <p>{{ data.name }}</p>
+<div class="small-card">
+    <h3 class="small-card-name">
+      {{ data.name }}
+    </h3>
+    <div class="small-card-description">
+      <p>
+        {{ data.description }}
+      </p>
+    </div>
+    <div class="small-card-controls">
+      <button class="small-card-controls-open" (click)="openProduct()">
+        Открыть
+      </button>
+    </div>
 </div>

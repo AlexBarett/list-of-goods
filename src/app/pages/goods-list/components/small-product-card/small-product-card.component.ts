@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Product } from 'src/app/interfaces/product';
 
@@ -12,4 +13,9 @@ export class SmallProductCardComponent {
   @Input()
   data!: Product;
 
+  constructor(private router: Router, private route: ActivatedRoute) { }
+
+  openProduct() {
+    this.router.navigate([this.data.id], { relativeTo: this.route });
+  }
 }

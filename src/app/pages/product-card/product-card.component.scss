@@ -1,0 +1,38 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  &-controls {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem 0;
+
+    border-bottom: 1px solid lightgray;
+
+    button {
+      margin-bottom: 1vh;
+    }
+  }
+
+  &-form {
+
+    &-input {
+      margin-top: 2vh;
+
+      &-field {
+        margin-top: 1vh;
+      }
+    }
+
+    &-controls {
+      display: flex;
+      justify-content: space-between;
+
+      width: 100%;
+
+      margin-top: 1rem;
+    }
+  }
+}

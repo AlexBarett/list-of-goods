@@ -1,0 +1,24 @@
+.small-card {
+  padding: 1rem 0.5rem;
+
+  border-bottom: 1px solid lightgray;
+
+  &-name {
+    margin: 0;
+  }
+
+  &-description {
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  &-controls {
+    &-open {
+      display: flex;
+      flex-direction: row;
+
+      margin-left: auto;
+    }
+  }
+}

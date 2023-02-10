@@ -1,4 +1,4 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -8,17 +8,19 @@ import { GoodsListModule } from './pages/goods-list/goods-list.module';
 import { GoodsListService } from './services/goods-list.service';
 import { BackendInterceptor } from './backend-mock/backend.interseptor';
 import { ProductCardModule } from './pages/product-card/product-card.module';
+import { TextareaResizeDirective } from './directives/textarea-resize.directive';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     GoodsListModule,
-    ProductCardModule
+    ProductCardModule,
+    TextareaResizeDirective
   ],
   providers: [
     GoodsListService,
