@@ -37,18 +37,18 @@ export class ProductCardComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.pipe(
-      switchMap(params => this.goodsService.getProduct(params['id']))
-    ).subscribe(data => {
-      this.data = data;
-      this.resetForm();
-    });
+      switchMap(params => this.goodsService.getProduct(params['id'])))
+      .subscribe(data => {
+        this.data = data;
+        this.resetForm();
+      });
 
   }
 
   back() {
     this.location.historyGo.length > 0
       ? this.location.back()
-      : this.router.navigate([''], { relativeTo: this.route.parent })
+      : this.router.navigate([''], { relativeTo: this.route.parent });
   }
 
   cancel() {

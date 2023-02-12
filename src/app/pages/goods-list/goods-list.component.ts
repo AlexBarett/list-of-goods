@@ -32,7 +32,7 @@ export class GoodsListComponent implements OnInit {
   }
 
   changeFilterName() {
-    sessionStorage.setItem('goods-list-filter-name', this.filterName)
+    sessionStorage.setItem('goods-list-filter-name', this.filterName);
     this.applyFilters();
   }
 

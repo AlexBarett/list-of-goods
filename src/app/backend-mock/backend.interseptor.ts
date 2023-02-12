@@ -8,7 +8,7 @@ import { list } from './mock-data';
 @Injectable()
 export class BackendInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor() { }
 
   intercept(req: HttpRequest<any>): Observable<HttpResponse<GoodsList | Product | void>> {
     return timer(50).pipe(switchMap(() => {
@@ -24,7 +24,7 @@ export class BackendInterceptor implements HttpInterceptor {
     }
 
     return of(new HttpResponse({ status: 200, body: list }));
-    }))
+    }));
   }
 
   private updateProduct(data: Product) {

@@ -102,4 +102,4 @@ export const list: GoodsList = [
     "name": "Crustatia",
     "description": "Nisi magna consectetur mollit mollit sit eu cillum anim occaecat proident consectetur deserunt dolore aute."
   }
-]
+];
